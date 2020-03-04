@@ -1,0 +1,23 @@
+-- CREATE TABLE users(
+-- user_id SERIAL PRIMARY KEY,
+-- username VARCHAR(20),
+-- first_name VARCHAR(50),
+-- last_name VARCHAR(50),
+-- email VARCHAR(100),
+-- profile_pic VARCHAR(300),
+-- zipcode INT,
+-- password VARCHAR(50)
+-- );
+
+-- CREATE TABLE locations(
+-- location_id SERIAL PRIMARY KEY,
+-- location_name VARCHAR(100),
+-- street_address VARCHAR(75),
+-- city VARCHAR(50),
+-- state VARCHAR(25),
+-- zipcode INT,
+-- image VARCHAR(300),
+-- description VARCHAR(500),
+-- rating INT,
+-- user_id INT REFERENCES users (user_id)
+-- );
