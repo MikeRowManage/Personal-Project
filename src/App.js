@@ -1,13 +1,24 @@
 import React from 'react';
-import Landing from './components/Landing'
+import {withRouter} from 'react-router-dom'
+import routes from './routes'
+import Header from './components/Header'
 import './App.css';
 
-function App() {
+function App(props) {
   return (
     <div className="App">
-     <Landing />
+    {props.location.pathname === '/' || props.location.pathname === '/register' ? (
+      <>
+     {routes}
+     </>
+    ) : (
+      <>
+      <Header />
+      {routes}
+      </>
+    )}
     </div>
   );
 }
 
-export default App;
+export default withRouter(App);

@@ -22,6 +22,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  background-image: image();
 }
 
 .App-link {
@@ -36,3 +37,13 @@
     transform: rotate(360deg);
   }
 }
+
+a{
+  text-decoration: none;
+  color: black;
+  }
+  
+  a:visited{
+  text-decoration: none;
+  color: black;
+  }
