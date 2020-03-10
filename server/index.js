@@ -2,9 +2,11 @@ require("dotenv").config();
 const express = require("express"),
   massive = require("massive"),
   session = require("express-session"),
+  aws = require('aws-sdk'),
   authCtrl = require("./controllers/authControllers"),
   ctrl = require('./controllers/controllers'),
-  { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env;
+  checkUser = require('./middleware/checkUser'),
+  { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING, S3_BUCKET, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY } = process.env;
 
 const app = express();
 
@@ -33,12 +35,16 @@ massive({
   );
 }).catch(err => console.log(err))
 
-app.post('/api/register', authCtrl.register)
-app.post('/api/login', authCtrl.login)
+app.post('/api/register', checkUser, authCtrl.register)
+app.post('/api/login', checkUser, authCtrl.login)
 app.post('/api/logout', authCtrl.logout)
+app.get('/api/user', checkUser)
 
 app.post('/api/locations/:id', ctrl.addNewLocation)
 app.get('/api/locations', ctrl.getAllLocations)
 app.get('/api/locations/:id', ctrl.getUserLocations)
+app.delete('/api/locations/:id', ctrl.deleteLocation)
+app.put('/api/locations/:id', ctrl.editLocation)
+app.get('/sign-s3', ctrl.getAWS)
 
 

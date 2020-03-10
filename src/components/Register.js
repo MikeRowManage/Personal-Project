@@ -27,7 +27,7 @@ class Register extends Component {
       first_name,
       last_name,
       email,
-      profile_pic,
+      // profile_pic,
       zipcode
     } = this.state;
 
