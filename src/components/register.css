@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: VT Bulletin;
+}
+
+.register {
+  background: linear-gradient(to bottom, #75BECE 0%, #1C6EA4 76%, #3593C5 100%);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.register-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-evenly;
+  border-radius: 25px;
+  box-shadow: 10px 10px 30px 1px rgb(58, 81, 82);
+  background: linear-gradient(to bottom, #75BECE 0%, #1C6EA4 76%, #3593C5 100%);
+  height: 60vh;
+  width: 90vw;
+
+}
+
+::placeholder {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+input {
+  width: 270px;
+  height: 30px;
+  border-radius: 10px;
+}

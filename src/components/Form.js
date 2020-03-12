@@ -2,24 +2,20 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import {v4 as randomString} from 'uuid'
-// import Dropzone from 'react-dropzone'
-// import {GridLoader} from 'react-spinners'
 
 class Form extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      isUploading: false,
       location_name: "",
       street_address: "",
       city: "",
       state: "",
       zipcode: "",
-      url: 'http://via.placeholder.com/450x450',
+      image: 'http://via.placeholder.com/450x450',
       description: "",
       rating: "",
-      locations: []
     };
   }
 
@@ -30,7 +26,7 @@ class Form extends Component {
       city,
       state,
       zipcode,
-      url,
+      image,
       description,
       rating
     } = this.state;
@@ -41,12 +37,13 @@ class Form extends Component {
         city,
         state,
         zipcode,
-        url,
+        image,
         description,
         rating
       })
       .then(() => {
         this.props.history.push("/profile");
+        
       })
       .catch(err => console.log(err));
   };
@@ -58,8 +55,7 @@ class Form extends Component {
   };
 
  getSignedRequest = ([file]) => {
-     console.log('hit getsigned')
-     this.setState({isUploading: true})
+
      const fileName = `${randomString()}-${file.name.replace(/\s/g, '-')}`
 
      axios.get(`/sign-s3?file-name=${fileName}&file-type=${file.type}`).then (res => {
@@ -69,7 +65,6 @@ class Form extends Component {
  }
 
  uploadFile = (file, signedRequest, url) => {
-     console.log('hit upload')
     const options = {
       headers: {
         'Content-Type': file.type,
@@ -79,33 +74,21 @@ class Form extends Component {
     axios
       .put(signedRequest, file, options)
       .then(response => {
-        this.setState({ isUploading: false, url });
+        this.setState({ image: url});
       })
       .catch(err => {
-        this.setState({
-          isUploading: false,
-        });
-        if (err.response.status === 403) {
-          alert(
-            `Your request for a signed URL failed with a status 403. Double check the CORS configuration and bucket policy in the README. You also will want to double check your AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in your .env and ensure that they are the same as the ones that you created in the IAM dashboard. You may need to generate new keys\n${
-              err.stack
-            }`
-          );
-        } else {
           alert(`ERROR: ${err.status}\n ${err.stack}`);
-        }
       });
   };
 
   render() {
     const {
-        isUploading,
       location_name,
       street_address,
       city,
       state,
       zipcode,
-      url,
+      image,
       description,
       rating
     } = this.state;
@@ -151,7 +134,8 @@ class Form extends Component {
           maxLength="5"
           onChange={this.handleInput}
         />
-        <img src={url} alt="" style={{ height: '200px', width: '200px'}}/>
+        
+        <img accept='image/*'src={image} alt="" style={{ height: '200px', width: '200px'}}/>
 
         <input
         type='file'
@@ -179,7 +163,7 @@ class Form extends Component {
           />
           <p>{rating}</p>
         </div>
-        <button onClick={this.uploadFile}>Submit</button>
+        <button onClick={this.addNewLocation}>Submit</button>
       </div>
     );
   }

@@ -1,10 +1,12 @@
 import React from 'react'
 
 function Location(props) {
-    const {location_name, street_address, city, state, zipcode, image, description, rating} = props.locations
+    console.log(props)
+    const {location_name, street_address, city, state, zipcode, image, description, rating, username} = props.locations
     return (
         <div>
             <h2>{location_name}</h2>
+            <p>Submitted by {username}</p>
             <p>{street_address} {city},{state} {zipcode}</p>
             <div>
                 <img style={{ height: "100px", 

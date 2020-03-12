@@ -4,19 +4,18 @@ import routes from './routes'
 import {connect} from 'react-redux'
 import {checkUser} from './dux/reducer'
 import Header from './components/Header'
+// import './reset.css'
 import './App.css';
 
 class App extends Component {
   
   
 componentDidMount() {
-  console.log('hit checkUser')
   this.props.checkUser()
 }
 
 componentDidUpdate(prevProps) {
   if(prevProps.reducer.user !== this.props.reducer.user) {
-    // console.log('hit condition')
     if(!this.props.reducer.user.username)
     this.props.history.push('/')
   }

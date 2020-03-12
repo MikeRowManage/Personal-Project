@@ -14,6 +14,7 @@ function Header(props) {
             props.history.push('/')
         })
     }
+    
     return (
         <div>
             <Link to='/home'><h1>Personal Project!</h1></Link>
@@ -21,7 +22,7 @@ function Header(props) {
             <div>
                 <Link to='/profile'><img  style={{ height: "100px", 
                 width: "100px", 
-                // backgroundImage: `url(${props.user.profile_pic})`, 
+                backgroundImage: `url(${props.user.profile_pic})`, 
                 backgroundSize: "cover", 
                 backgroundRepeat: "no-repeat" }} alt=""/>
             </Link>

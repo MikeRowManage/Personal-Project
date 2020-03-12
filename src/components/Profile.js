@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import UserLocations from "./UserLocations";
+import {getUser} from "../dux/reducer"
 
 class Profile extends Component {
   constructor(props) {
@@ -16,11 +17,17 @@ class Profile extends Component {
     this.getUserLocations();
   };
 
+  componentDidUpdate(prevProps) {
+    if(prevProps !== this.props) {
+      this.getUserLocations()
+    }
+  }
+
+  
   getUserLocations = () => {
     axios
       .get(`/api/locations/${this.props.user.user_id}`)
       .then(res => {
-      console.log('hit getuserlocations', res.data)
         this.setState({
           userLocations: res.data
         });
@@ -54,4 +61,4 @@ const mapStateToProps = reduxState => {
   };
 };
 
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps, {getUser})(Profile);

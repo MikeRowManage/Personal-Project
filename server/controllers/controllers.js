@@ -14,14 +14,21 @@ module.exports = {
         const {id} = req.params
         const db = req.app.get('db')
 
-        const userLocations = await db.get_user_locations([id])
-            res.status(200).send(userLocations)
+        try{
+            const userLocations = await db.get_user_locations([id])
+            if(req.session.user){
+            return res.status(200).send(userLocations)
+            }
+        } catch (error) {
+            return res.sendStatus(500)
+        }
     },
 
     addNewLocation: async (req, res) => {
         const {id} = req.params
         const {location_name, street_address, city, state, zipcode, image, description, rating} = req.body
         const db = req.app.get('db')
+        console.log(req.body)
 
         await db.add_new_location([id, location_name, street_address, city, state, zipcode, image, description, rating])
         .then(() => {
@@ -58,36 +65,45 @@ module.exports = {
         })
     },
 
-    getAWS: (req, res) => {
-
-  aws.config = {
-    region: 'us-west-1',
-    accessKeyId: AWS_ACCESS_KEY_ID,
-    secretAccessKey: AWS_SECRET_ACCESS_KEY
+    nodeMailer: (req, res) => {
+        const {first_name, email} = req.body
+        const transport = {
+  host: 'smtp.gmail.com',
+  port: 587,
+  auth: {
+    user: process.env.EMAIL,
+    pass: process.env.PASSWORD
   }
-  
-  const s3 = new aws.S3();
-  const fileName = req.query['file-name'];
-  const fileType = req.query['file-type'];
-  const s3Params = {
-    Bucket: S3_BUCKET,
-    Key: fileName,
-    Expires: 60,
-    ContentType: fileType,
-    ACL: 'public-read'
-  };
-
-  s3.getSignedUrl('putObject', s3Params, (err, data) => {
-    if(err){
-      console.log(err);
-      return res.end();
-    }
-    const returnData = {
-      signedRequest: data,
-      url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
-    };
-
-    return res.send(returnData)
-  });
 }
+
+const transporter = nodemailer.createTransport(transport)
+
+transporter.verify((error, success) => {
+  if (error) {
+    console.log(error)
+  } else {
+    console.log('Server is read to take messages')
+  }
+})
+
+        let mail = {
+            from: "Personal Project",
+            to: email,
+            subject: "Welcome to Toilet Quest!",
+            text: `Hi ${first_name}, 
+            Thank you for using Toilet Quest!`
+        }
+
+        transporter.sendMail(mail, (err, data) => {
+            if(err) {
+                res.json({
+                    msg: 'fail'
+                })
+            } else {
+                res.json({
+                    msg: 'success'
+                })
+            }
+        })
+    }
 }
