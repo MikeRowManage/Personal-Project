@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {getUser} from '../dux/reducer'
 import axios from 'axios'
-import './Landing.css'
+import './landing.css'
 import toilet from '../assets/Toilet.png'
 
 class Landing extends Component {
@@ -37,8 +37,8 @@ class Landing extends Component {
     render() {
         return (
             <div className="landing">
-                <header>
-                <h1 style={{ fontSize: '4rem', color: 'black', fontWeight: '100', display: 'flex', justifyContent: 'center', paddingLeft: '5px'}}>Toilet Quest<img src={toilet} alt="" style={{ height: '70px', width: '55px',}}/></h1>
+                <header className='landing-header'>
+                <h1>Toilet Quest<img src={toilet} alt="" style={{ height: '60px', width: '60px'}}/></h1>
                 </header>
                 
                 <div className="landing-auth">

@@ -1,10 +1,21 @@
 * {
   margin: 0;
   box-sizing: border-box;
-  font-family: VT Bulletin;
-  
 }
 
+.landing-header {
+  font-size: 1.7rem;
+  background-color: white;
+  border-radius: 20px;
+  border: 2px solid black;
+  width: 99vw;
+}
+
+.landing-header > h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .landing {
   height: 100vh;
@@ -14,7 +25,11 @@
   justify-content: space-around;
   align-items: center;
   padding-bottom: 200px;
-  
+  background-image: url(../assets/RestroomSign.jpg);
+  background-repeat: no-repeat;
+  background-size: 330%;
+  background-position-x: 50%;
+  background-position-y: 40%;
 }
 
 .landing-auth {
@@ -26,10 +41,14 @@
   width: 90vw;
   text-align: center;
   border-radius: 25px;
-  box-shadow: 10px 10px 30px 1px rgb(230, 230, 230);
+  background: rgba(255,255,255, 0.40);
 }
 
-::placeholder {
+.landing-auth::placeholder {
   text-align: center;
+  font-size: 1.2rem;
+}
+
+.landing-auth > input {
   font-size: 1.2rem;
 }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import BeautyStars from 'beauty-stars'
 import { connect } from "react-redux";
 import {v4 as randomString} from 'uuid'
 
@@ -31,6 +32,12 @@ class UserLocations extends Component {
       [e.target.name]: e.target.value
     });
   };
+
+  handleRating = value => {
+    this.setState({
+      rating: value
+    })
+  }
 
   getSignedRequest = ([file]) => {
     console.log("hit getsigned");
@@ -199,17 +206,12 @@ class UserLocations extends Component {
               maxLength="500"
               onChange={this.handleInput}
             />
-            <div>
-              <label htmlFor="rating">Rating</label>
-              <input
-                name="rating"
-                type="range"
-                min="0"
-                max="10"
-                onChange={this.handleInput}
-              />
-              <p>{this.state.rating}</p>
-            </div>
+
+           <BeautyStars
+          name="rating"
+        value={rating}
+        onChange={this.handleRating}
+      />
             <button onClick={this.editLocation}>Save</button>
             <button onClick={this.handleCancel}>Cancel</button>
           </div>
@@ -232,7 +234,10 @@ class UserLocations extends Component {
               />
             </div>
             <p>{description}</p>
-            <h3>{rating}</h3>
+             <BeautyStars
+          name="rating"
+        value={rating}
+      />
             <button onClick={this.deleteLocation}>Delete</button>
             <button onClick={this.toggleEdit}>Edit</button>
           </div>

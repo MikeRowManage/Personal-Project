@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import {v4 as randomString} from 'uuid'
+import BeautyStars from 'beauty-stars';
+import { v4 as randomString } from "uuid";
+import "./form.scss";
+import Default from "../assets/default.jpg";
 
 class Form extends Component {
   constructor(props) {
@@ -13,9 +16,9 @@ class Form extends Component {
       city: "",
       state: "",
       zipcode: "",
-      image: 'http://via.placeholder.com/450x450',
+      image: Default,
       description: "",
-      rating: "",
+      rating: 0
     };
   }
 
@@ -43,7 +46,6 @@ class Form extends Component {
       })
       .then(() => {
         this.props.history.push("/profile");
-        
       })
       .catch(err => console.log(err));
   };
@@ -54,30 +56,38 @@ class Form extends Component {
     });
   };
 
- getSignedRequest = ([file]) => {
+  handleRating = value => {
+    this.setState({
+      rating: value
+    })
+  }
 
-     const fileName = `${randomString()}-${file.name.replace(/\s/g, '-')}`
+  getSignedRequest = ([file]) => {
+    const fileName = `${randomString()}-${file.name.replace(/\s/g, "-")}`;
 
-     axios.get(`/sign-s3?file-name=${fileName}&file-type=${file.type}`).then (res => {
-         const {signedRequest, url} = res.data
-         this.uploadFile(file, signedRequest, url)
-     }).catch(err => console.log(err))
- }
+    axios
+      .get(`/sign-s3?file-name=${fileName}&file-type=${file.type}`)
+      .then(res => {
+        const { signedRequest, url } = res.data;
+        this.uploadFile(file, signedRequest, url);
+      })
+      .catch(err => console.log(err));
+  };
 
- uploadFile = (file, signedRequest, url) => {
+  uploadFile = (file, signedRequest, url) => {
     const options = {
       headers: {
-        'Content-Type': file.type,
-      },
+        "Content-Type": file.type
+      }
     };
 
     axios
       .put(signedRequest, file, options)
       .then(response => {
-        this.setState({ image: url});
+        this.setState({ image: url });
       })
       .catch(err => {
-          alert(`ERROR: ${err.status}\n ${err.stack}`);
+        alert(`ERROR: ${err.status}\n ${err.stack}`);
       });
   };
 
@@ -93,77 +103,82 @@ class Form extends Component {
       rating
     } = this.state;
     return (
-      <div>
-        <input
-          placeholder="Location Title"
-          name="location_name"
-          value={location_name}
-          type="text"
-          maxLength="100"
-          onChange={this.handleInput}
-        />
-        <input
-          placeholder="Street Address"
-          name="street_address"
-          value={street_address}
-          type="text"
-          maxLength="75"
-          onChange={this.handleInput}
-        />
-        <input
-          placeholder="City"
-          name="city"
-          value={city}
-          type="text"
-          maxLength="50"
-          onChange={this.handleInput}
-        />
-        <input
-          placeholder="State"
-          name="state"
-          value={state}
-          type="text"
-          maxLength="25"
-          onChange={this.handleInput}
-        />
-        <input
-          placeholder="ZipCode"
-          name="zipcode"
-          value={zipcode}
-          type="text"
-          maxLength="5"
-          onChange={this.handleInput}
-        />
-        
-        <img accept='image/*'src={image} alt="" style={{ height: '200px', width: '200px'}}/>
-
-        <input
-        type='file'
-        onChange={e => this.getSignedRequest(e.target.files) }
-        />
-
-        <textarea
-          placeholder="Description"
-          name="description"
-          value={description}
-          type="text"
-          rows="5"
-          cols="100"
-          maxLength="500"
-          onChange={this.handleInput}
-        />
-        <div>
-          <label htmlFor="rating">Rating</label>
+      <div className="form">
+        <div className="form-body">
           <input
-            name="rating"
-            type="range"
-            min="0"
-            max="10"
+            placeholder="Location Title"
+            name="location_name"
+            value={location_name}
+            type="text"
+            maxLength="100"
             onChange={this.handleInput}
           />
-          <p>{rating}</p>
+          <input
+            placeholder="Street Address"
+            name="street_address"
+            value={street_address}
+            type="text"
+            maxLength="75"
+            onChange={this.handleInput}
+          />
+          <input
+            placeholder="City"
+            name="city"
+            value={city}
+            type="text"
+            maxLength="50"
+            onChange={this.handleInput}
+          />
+          <input
+            placeholder="State"
+            name="state"
+            value={state}
+            type="text"
+            maxLength="25"
+            onChange={this.handleInput}
+          />
+          <input
+            placeholder="ZipCode"
+            name="zipcode"
+            value={zipcode}
+            type="text"
+            maxLength="5"
+            onChange={this.handleInput}
+          />
+
+          <img
+            accept="image/*"
+            src={image}
+            alt=""
+            style={{ height: "100px", width: "100px" }}
+          />
+
+          <input
+            type="file"
+            onChange={e => this.getSignedRequest(e.target.files)}
+          />
+
+          <textarea
+            placeholder="Description"
+            name="description"
+            value={description}
+            type="text"
+            rows="5"
+            cols="50"
+            maxLength="500"
+            onChange={this.handleInput}
+          />
+
+          <BeautyStars
+          name="rating"
+        value={rating}
+        onChange={this.handleRating}
+      />
+
+          <button style={{ fontSize: "1.2rem" }} onClick={this.addNewLocation}>
+            Submit
+          </button>
         </div>
-        <button onClick={this.addNewLocation}>Submit</button>
       </div>
     );
   }

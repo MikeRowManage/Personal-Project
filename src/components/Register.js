@@ -5,6 +5,8 @@ import { getUser } from "../dux/reducer";
 import { Link } from "react-router-dom";
 import {v4 as randomString} from 'uuid'
 import './register.css'
+import toilet from '../assets/Toilet.png'
+import defaultImage from '../assets/default.jpg'
 
 class Register extends Component {
   constructor(props) {
@@ -16,7 +18,7 @@ class Register extends Component {
       first_name: "",
       last_name: "",
       email: "",
-      profile_pic: "http://via.placeholder.com/450x450",
+      profile_pic: defaultImage,
       zipcode: ""
     };
   }
@@ -114,8 +116,8 @@ class Register extends Component {
 
     return (
       <div className="register">
-      <header>
-        <h1 style={{ fontSize: '4rem', color: 'black', fontWeight: '500', textShadow: '7px 6px 10px #000547'}}>Toilet Quest</h1>
+      <header className='register-header'>
+        <h1>Toilet Quest<img src={toilet} alt="" style={{ height: '60px', width: '60px'}}/></h1>
             </header>
         <div className="register-body">
         <input
@@ -155,7 +157,9 @@ class Register extends Component {
           onChange={this.handleInput}
           required
         />
-        <img accept='image/*'src={profile_pic} alt="" style={{ height: '145px', width: '145px'}}/>
+        <div>
+        <img accept='image/*'src={profile_pic} alt="" style={{ height: '100px', width: '100px'}}/>
+        </div>
 
         <input
         type='file'
@@ -170,7 +174,7 @@ class Register extends Component {
           onChange={this.handleInput}
           required
         />
-        <button onClick={this.handleRegister}>Register</button>
+        <button style={{ fontSize: '1.2rem'}} onClick={this.handleRegister}>Register</button>
         <Link to="/">
           {" "}
           <h3>Already have an account? Login here!</h3>{" "}

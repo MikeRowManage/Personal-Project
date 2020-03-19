@@ -1,0 +1,23 @@
+@mixin background() {
+  background-image: url(../assets/RestroomSign.jpg);
+  background-repeat: no-repeat;
+  background-size: 330%;
+  background-position-x: 50%;
+  background-position-y: 40%;
+  background-attachment: fixed;
+}
+
+@mixin title() {
+  font-size: 1.1rem;
+  background-color: white;
+  border-radius: 20px;
+  border: 2px solid black;
+  width: 65vw;
+}
+
+@mixin h1-title() {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

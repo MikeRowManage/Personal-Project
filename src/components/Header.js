@@ -4,6 +4,9 @@ import {withRouter} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 import {logout} from '../dux/reducer'
+import sign from '../assets/RestroomSign.jpg'
+import toilet from '../assets/Toilet.png'
+import './header.scss'
 
 function Header(props) {
 
@@ -16,17 +19,20 @@ function Header(props) {
     }
     
     return (
-        <div>
-            <Link to='/home'><h1>Personal Project!</h1></Link>
-            <Link to='/profile'><p>{props.user.username}</p></Link>
-            <div>
-                <Link to='/profile'><img  style={{ height: "100px", 
-                width: "100px", 
+        <div className="header" style={{ backgroundImage: `url(${sign})`}}>
+            <div className="header-title">
+            <Link to='/home'><h1>Toilet Quest<img className="logo" src={toilet} alt="" style={{ height: '35px', width: '30px'}}/></h1></Link>
+            </div>
+            <div className='profile-header'>
+                <Link to='/profile'><img className='header-image'  style={{  
                 backgroundImage: `url(${props.user.profile_pic})`, 
                 backgroundSize: "cover", 
                 backgroundRepeat: "no-repeat" }} alt=""/>
             </Link>
-            <h3 style={{ fontWeight: "300", color: "blue" }} onClick={logout}>Logout</h3>
+            <div className="username">
+            <Link to='/profile'><p>{props.user.username}</p></Link>
+            </div>
+            <h3 style={{ fontWeight: "300", color: "blue", fontSize: '.75rem' }} onClick={logout}>Logout</h3>
             </div>
         </div>
     )
