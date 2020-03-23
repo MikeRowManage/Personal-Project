@@ -1,5 +1,6 @@
 import React from 'react'
 import BeautyStars from 'beauty-stars'
+import Default from '../assets/default.jpg'
 import './location.scss'
 
 function Location(props) {
@@ -20,6 +21,7 @@ function Location(props) {
             <div>
                 <img style={{ float: 'left', height: "100px", 
                 width: "100px",
+                borderRadius: '25px',
                 backgroundImage: `url(${image})`, 
                 backgroundSize: "cover", 
                 backgroundRepeat: "no-repeat", marginTop: '7px' }} alt=""/>

@@ -3,6 +3,7 @@ import axios from "axios";
 import BeautyStars from 'beauty-stars'
 import { connect } from "react-redux";
 import {v4 as randomString} from 'uuid'
+import './userLocations.scss'
 
 class UserLocations extends Component {
   constructor(props) {
@@ -141,7 +142,8 @@ class UserLocations extends Component {
     return (
       <>
         {this.state.isEditing ? (
-          <div>
+          <div className='user-locations'>
+            <div className='user-locations-edit'>
             <input
               placeholder="Location Title"
               name="location_name"
@@ -183,13 +185,20 @@ class UserLocations extends Component {
               onChange={this.handleInput}
             />
             
+<h3 style={{ marginBottom: '7px'}}>Rating:</h3>
+           <BeautyStars
+          name="rating"
+        value={this.state.rating}
+        size='20px'
+        onChange={this.handleRating}
+      />
             <label htmlFor="image">Upload a Photo</label>
             <img
               accept="image/*"
               src={image}
               name="image"
               alt=""
-              style={{ height: "200px", width: "200px" }}
+              style={{ height: "100px", width: "100px", marginTop: '7px' }}
             />
 
             <input
@@ -202,25 +211,27 @@ class UserLocations extends Component {
               value={this.state.description}
               type="text"
               rows="5"
-              cols="100"
+              cols="50"
               maxLength="500"
               onChange={this.handleInput}
             />
-
-           <BeautyStars
-          name="rating"
-        value={rating}
-        onChange={this.handleRating}
-      />
             <button onClick={this.editLocation}>Save</button>
             <button onClick={this.handleCancel}>Cancel</button>
+            </div>
           </div>
         ) : (
-          <div>
-            <h2>{location_name}</h2>
+          <div className='user-locations'>
+          <div className='user-locations-body'>
+            <h2 style={{borderBottom: '2px solid black', fontSize: '1.2rem'}}>{location_name}</h2>
             <p>
               {street_address} {city},{state} {zipcode}
             </p>
+            <h3 style={{ marginBottom: '7px'}}>Rating:</h3>
+             <BeautyStars
+          name="rating"
+        value={rating}
+        size='20px'
+      />
             <div>
               <img
                 style={{
@@ -228,18 +239,16 @@ class UserLocations extends Component {
                   width: "100px",
                   backgroundImage: `url(${image})`,
                   backgroundSize: "cover",
-                  backgroundRepeat: "no-repeat"
+                  backgroundRepeat: "no-repeat",
+                  marginTop: '7px'
                 }}
                 alt=""
               />
             </div>
             <p>{description}</p>
-             <BeautyStars
-          name="rating"
-        value={rating}
-      />
             <button onClick={this.deleteLocation}>Delete</button>
             <button onClick={this.toggleEdit}>Edit</button>
+            </div>
           </div>
         )}
       </>
