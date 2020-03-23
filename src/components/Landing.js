@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {getUser} from '../dux/reducer'
 import axios from 'axios'
-import './Landing.css'
+import './landing.css'
 import toilet from '../assets/Toilet.png'
 
 class Landing extends Component {
@@ -38,25 +38,25 @@ class Landing extends Component {
         return (
             <div className="landing">
                 <header className='landing-header'>
-                <h1>Toilet Quest<img src={toilet} alt="" style={{ height: '60px', width: '60px'}}/></h1>
+                <h1>Toilet Quest<img className="toilet-icon"src={toilet} alt=""/></h1>
                 </header>
                 
                 <div className="landing-auth">
-                <input style={{ width: '270px', height: '30px', borderRadius: '10px'}}
+                <input className="auth-input"
                 placeholder="Username"
                 name='username'
                 value={this.state.username}
                 onChange={this.handleInput}
                 required/>
-                <input style={{ width: '270px', height: '30px', marginTop: '15px', marginBottom: '15px', borderRadius: '10px'}}
+                <input className="auth-input"
                 placeholder="Password"
                 name='password'
                 value={this.state.password}
                 type='password'
                 onChange={this.handleInput}
                 required/>
-                <button style={{ fontSize: '1.2rem'}}onClick={this.handleLogin}>Login</button>
-                <h3 style={{ color: "blue", paddingTop: '25px' }}><Link to='/register'>Don't have an account? Register here!</Link></h3>
+                <button className='login-button' onClick={this.handleLogin}>Login</button>
+                <h3 className="register-link"><Link to='/register'>Don't have an account? Register here!</Link></h3>
                 
                 </div>
             </div>

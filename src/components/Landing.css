@@ -3,52 +3,221 @@
   box-sizing: border-box;
 }
 
-.landing-header {
-  font-size: 1.7rem;
-  background-color: white;
-  border-radius: 20px;
-  border: 2px solid black;
-  width: 99vw;
+@media (max-width: 480px) {
+  .landing-header {
+    font-size: 1.7rem;
+    background-color: white;
+    border-radius: 20px;
+    border: 2px solid black;
+    width: 99vw;
+  }
+
+  .toilet-icon {
+    height: 60px;
+    width: 60px;
+  }
+
+  .landing-header > h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .landing {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 200px;
+    background-image: url(../assets/RestroomSign.jpg);
+    background-repeat: no-repeat;
+    background-size: 330%;
+    background-position-x: 50%;
+    background-position-y: 40%;
+  }
+
+  .landing-auth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 30vh;
+    width: 90vw;
+    text-align: center;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.4);
+  }
+
+  .landing-auth::placeholder {
+    text-align: center;
+    font-size: 1.2rem;
+  }
+
+  .landing-auth > input {
+    font-size: 1.2rem;
+  }
+
+  .auth-input {
+    width: 270px;
+    height: 30px;
+    border-radius: 10px;
+  }
+
+  .login-button {
+    font-size: 1.2rem;
+  }
+
+  .register-link {
+    padding-top: 25px;
+  }
+
 }
 
-.landing-header > h1 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@media (min-width: 481px) {
+  .landing-header {
+    font-size: 3.6rem;
+    background-color: white;
+    border-radius: 20px;
+    border: 2px solid black;
+    width: 99vw;
+  }
+
+  .toilet-icon {
+    height: 120px;
+    width: 120px;
+  }
+
+  .landing-header > h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .landing {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 200px;
+    background-image: url(../assets/RestroomSign.jpg);
+    background-repeat: no-repeat;
+    background-size: 220%;
+    background-position-x: 50%;
+    background-position-y: 40%;
+  }
+
+  .landing-auth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 30vh;
+    width: 90vw;
+    text-align: center;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.4);
+  }
+
+  .landing-auth::placeholder {
+    text-align: center;
+    font-size: 2.4rem;
+  }
+
+  .landing-auth > input {
+    font-size: 2.4rem;
+  }
+
+  .auth-input {
+    width: 540px;
+    height: 60px;
+    border-radius: 10px;
+  }
+
+  .login-button {
+    font-size: 2rem;
+  }
+
+  .register-link {
+    font-size: 1.8rem;
+    padding-top: 25px;
+  }
+
 }
 
-.landing {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content:center;
-  justify-content: space-around;
-  align-items: center;
-  padding-bottom: 200px;
-  background-image: url(../assets/RestroomSign.jpg);
-  background-repeat: no-repeat;
-  background-size: 330%;
-  background-position-x: 50%;
-  background-position-y: 40%;
-}
+@media (min-width: 769px) {
+  .landing-header {
+    font-size: 5.4rem;
+    background-color: white;
+    border-radius: 20px;
+    border: 2px solid black;
+    width: 99vw;
+  }
 
-.landing-auth {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 30vh;
-  width: 90vw;
-  text-align: center;
-  border-radius: 25px;
-  background: rgba(255,255,255, 0.40);
-}
+  .toilet-icon {
+    height: 180px;
+    width: 180px;
+  }
 
-.landing-auth::placeholder {
-  text-align: center;
-  font-size: 1.2rem;
-}
+  .landing-header > h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-.landing-auth > input {
-  font-size: 1.2rem;
+  .landing {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 200px;
+    background-image: url(../assets/RestroomSign.jpg);
+    background-repeat: no-repeat;
+    background-size: 150%;
+    background-position-x: 50%;
+    background-position-y: 40%;
+  }
+
+  .landing-auth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 35vh;
+    width: 60vw;
+    text-align: center;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.4);
+  }
+
+  .landing-auth::placeholder {
+    text-align: center;
+    font-size: 2.4rem;
+  }
+
+  .landing-auth > input {
+    font-size: 2.4rem;
+  }
+
+  .auth-input {
+    width: 540px;
+    height: 60px;
+    border-radius: 10px;
+  }
+
+  .login-button {
+    font-size: 2rem;
+    margin-top: 10px;
+  }
+
+  .register-link {
+    font-size: 1.8rem;
+    padding-top: 25px;
+  }
+
 }

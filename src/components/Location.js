@@ -1,6 +1,5 @@
 import React from 'react'
 import BeautyStars from 'beauty-stars'
-import Default from '../assets/default.jpg'
 import './location.scss'
 
 function Location(props) {

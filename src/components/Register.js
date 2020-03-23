@@ -3,10 +3,10 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { getUser } from "../dux/reducer";
 import { Link } from "react-router-dom";
-import {v4 as randomString} from 'uuid'
-import './register.css'
-import toilet from '../assets/Toilet.png'
-import defaultImage from '../assets/default.jpg'
+import { v4 as randomString } from "uuid";
+import "./register.css";
+import toilet from "../assets/Toilet.png";
+import defaultImage from "../assets/default.jpg";
 
 class Register extends Component {
   constructor(props) {
@@ -46,24 +46,24 @@ class Register extends Component {
       })
       .then(res => {
         this.props.getUser(res.data);
-        this.handleNodeMailer()
+        this.handleNodeMailer();
         this.props.history.push("/home");
       })
       .catch(err => console.log(err));
   };
 
   handleNodeMailer = () => {
-    const {first_name, email} = this.state
+    const { first_name, email } = this.state;
 
-    axios.post('/send', {first_name, email}).then(res => {
-      if(res.data.msg === 'success') {
-        alert('Message Sent!')
-        this.props.history.push('/home')
-      } else if(res.data.msg === 'fail') {
-        alert('Message failed to send')
+    axios.post("/send", { first_name, email }).then(res => {
+      if (res.data.msg === "success") {
+        alert("Message Sent!");
+        this.props.history.push("/home");
+      } else if (res.data.msg === "fail") {
+        alert("Message failed to send");
       }
-    })
-  }
+    });
+  };
 
   handleInput = e => {
     this.setState({
@@ -116,69 +116,87 @@ class Register extends Component {
 
     return (
       <div className="register">
-      <header className='register-header'>
-        <h1>Toilet Quest<img src={toilet} alt="" style={{ height: '60px', width: '60px'}}/></h1>
-            </header>
+        <header className="register-header">
+          <h1>
+            Toilet Quest
+            <img src={toilet} alt="" className="toilet-icon" />
+          </h1>
+        </header>
         <div className="register-body">
-        <input
-          placeholder="Username"
-          name="username"
-          value={username}
-          onChange={this.handleInput}
-          required
-        />
-        <input
-          placeholder="Password"
-          name="password"
-          type="password"
-          value={password}
-          onChange={this.handleInput}
-          required
-        />
-        <input
-          placeholder="First Name"
-          name="first_name"
-          value={first_name}
-          onChange={this.handleInput}
-          required
-        />
-        <input
-          placeholder="Last Name"
-          name="last_name"
-          value={last_name}
-          onChange={this.handleInput}
-          required
-        />
-        <input
-          placeholder="Email"
-          name="email"
-          type="email"
-          value={email}
-          onChange={this.handleInput}
-          required
-        />
-        <div>
-        <img accept='image/*'src={profile_pic} alt="" style={{ height: '100px', width: '100px'}}/>
-        </div>
+          <input
+            className="register-input"
+            placeholder="Username"
+            name="username"
+            value={username}
+            onChange={this.handleInput}
+            required
+          />
+          <input
+            className="register-input"
+            placeholder="Password"
+            name="password"
+            type="password"
+            value={password}
+            onChange={this.handleInput}
+            required
+          />
+          <input
+            className="register-input"
+            placeholder="First Name"
+            name="first_name"
+            value={first_name}
+            onChange={this.handleInput}
+            required
+          />
+          <input
+            className="register-input"
+            placeholder="Last Name"
+            name="last_name"
+            value={last_name}
+            onChange={this.handleInput}
+            required
+          />
+          <input
+            className="register-input"
+            placeholder="Email"
+            name="email"
+            type="email"
+            value={email}
+            onChange={this.handleInput}
+            required
+          />
 
-        <input
-        type='file'
-        onChange={e => this.getSignedRequest(e.target.files) }
-        />
 
-        <input
-          placeholder="Your Zip Code"
-          name="zipcode"
-          type="number"
-          value={zipcode}
-          onChange={this.handleInput}
-          required
-        />
-        <button style={{ fontSize: '1.2rem'}} onClick={this.handleRegister}>Register</button>
-        <Link to="/">
-          {" "}
-          <h3>Already have an account? Login here!</h3>{" "}
-        </Link>
+          <input
+            className="register-input"
+            placeholder="Your Zip Code"
+            name="zipcode"
+            type="number"
+            value={zipcode}
+            onChange={this.handleInput}
+            required
+          />
+          <div>
+            <img
+              accept="image/*"
+              src={profile_pic}
+              alt=""
+              className="profile-upload"
+            />
+          </div>
+          <input
+            type="file"
+            onChange={e => this.getSignedRequest(e.target.files)}
+          />
+          <button className="register-button" onClick={this.handleRegister}>
+            Register
+          </button>
+          <Link to="/">
+            {" "}
+            <h3 className="login-link">
+              Already have an account? Login here!
+            </h3>{" "}
+          </Link>
         </div>
       </div>
     );
