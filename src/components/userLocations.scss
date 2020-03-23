@@ -1,7 +1,7 @@
 @import '../sass/vars';
 
 .user-locations {
-  @include background();
+  @include background-mobile();
   display: flex;
   justify-content: center;
   align-items: center;

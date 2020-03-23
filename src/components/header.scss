@@ -5,19 +5,21 @@
   box-sizing: border-box;
 }
 
+@media (max-width: 480px) {
 .header {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   border-bottom: 2px solid black;
   height: 11vh;
+  background-image: url('../assets/RestroomSign.jpg')
 }
 
 .header-title {
-  @include title();
+  @include title-mobile();
 }
 
-.header-title > h1 {
+.app-name {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,4 +35,106 @@
 .username {
   font-size: .75rem;
 }
+
+.logo {
+  height: 35px;
+  width: 35px;
+}
+
+.logout-link {
+  font-weight: 300;
+  color: blue;
+  font-size: .75rem;
+}
+
+}
+
+@media (min-width: 481px) {
+  .header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 2px solid black;
+    height: 14vh;
+    background-image: url('../assets/RestroomSign.jpg');
+    background-size: 170%;
+  }
+  
+  .header-title {
+    @include title-tablet();
+  }
+  
+  .app-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .header-image {
+    border: 2px solid black;
+    border-radius: 50%;
+    height: 95px;
+    width: 95px;
+  }
+  
+  .username {
+    font-size: 1rem;
+  }
+
+  .logo {
+    height: 70px;
+    width: 70px;
+  }
+
+  .logout-link {
+    font-weight: 300;
+    color: blue;
+    font-size: .85rem;
+  }
+  
+  }
+
+  @media (min-width: 769px) {
+    .header {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      border-bottom: 2px solid black;
+      height: 20vh;
+    }
+    
+    .header-title {
+      @include title-desktop();
+    }
+    
+    .app-name {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .header-image {
+      border: 2px solid black;
+      border-radius: 50%;
+      height: 115px;
+      width: 115px;
+    }
+    
+    .username {
+      font-size: 1rem;
+    }
+
+    .logo {
+      height: 120px;
+      width: 120px;
+    }
+  
+    .logout-link {
+      font-weight: 300;
+      color: blue;
+      font-size: .95rem;
+    }
+    
+    }
+
 

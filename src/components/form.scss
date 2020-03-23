@@ -1,7 +1,7 @@
 @import "../sass/vars";
 
 .form {
-  @include background();
+  @include background-mobile();
   height: 100vh;
   display: flex;
   justify-content: center;

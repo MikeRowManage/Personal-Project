@@ -185,6 +185,7 @@ class Register extends Component {
             />
           </div>
           <input
+            className="choose-file"
             type="file"
             onChange={e => this.getSignedRequest(e.target.files)}
           />

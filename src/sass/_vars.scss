@@ -1,4 +1,4 @@
-@mixin background() {
+@mixin background-mobile() {
   background-image: url(../assets/RestroomSign.jpg);
   background-repeat: no-repeat;
   background-size: 330%;
@@ -7,10 +7,44 @@
   background-attachment: fixed;
 }
 
-@mixin title() {
+@mixin background-tablet() {
+  background-image: url(../assets/RestroomSign.jpg);
+  background-repeat: no-repeat;
+  background-size: 220%;
+  background-position-x: 50%;
+  background-position-y: 40%;
+  background-attachment: fixed;
+}
+
+@mixin background-desktop() {
+  background-image: url(../assets/RestroomSign.jpg);
+  background-repeat: no-repeat;
+  background-size: 150%;
+  background-position-x: 50%;
+  background-position-y: 40%;
+  background-attachment: fixed;
+}
+
+@mixin title-mobile() {
   font-size: 1.1rem;
   background-color: white;
   border-radius: 20px;
+  border: 2px solid black;
+  width: 65vw;
+}
+
+@mixin title-tablet() {
+  font-size: 2.3rem;
+  background-color: white;
+  border-radius: 40px;
+  border: 2px solid black;
+  width: 65vw;
+}
+
+@mixin title-desktop() {
+  font-size: 3.8rem;
+  background-color: white;
+  border-radius: 100px;
   border: 2px solid black;
   width: 65vw;
 }

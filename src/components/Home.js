@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Location from "./Location";
 import axios from "axios";
 import "./home.scss";
-import sign from "../assets/sign.png";
+
 
 const Home = props => {
   const [zipcode, setZipcode] = useState("");
@@ -21,7 +21,7 @@ const Home = props => {
   return (
     <div className="home">
       <div className="home-search">
-        <label>
+        <label className="home-label">
           Find A Location:
           <input
             placeholder="Enter Your Zip Code"
@@ -32,19 +32,11 @@ const Home = props => {
          
         </label>
 
-        <label>
-          Add Your Own Location:{" "}
+        <label className="home-label">
+          Add Your Own Location:{"  "}
           <Link to="/form">
             <button
-              style={{
-                border: "2px solid black",
-                borderRadius: "10px",
-                backgroundImage: `url(${sign})`,
-                backgroundRepeat: "no repeat",
-                backgroundSize: "cover",
-                height: "30px",
-                width: "30px"
-              }}
+              className="form-link"
             ></button>
           </Link>
         </label>
