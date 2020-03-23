@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {getUser} from '../dux/reducer'
 import axios from 'axios'
-import './landing.css'
+import './Landing.css'
 import toilet from '../assets/Toilet.png'
 
 class Landing extends Component {
