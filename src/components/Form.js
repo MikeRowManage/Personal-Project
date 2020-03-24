@@ -15,7 +15,7 @@ class Form extends Component {
       street_address: "",
       city: "",
       state: "",
-      zipcode: "",
+      location_zipcode: "",
       image: Default,
       description: "",
       rating: 0
@@ -28,7 +28,7 @@ class Form extends Component {
       street_address,
       city,
       state,
-      zipcode,
+      location_zipcode,
       image,
       description,
       rating
@@ -39,7 +39,7 @@ class Form extends Component {
         street_address,
         city,
         state,
-        zipcode,
+        location_zipcode,
         image,
         description,
         rating
@@ -97,7 +97,7 @@ class Form extends Component {
       street_address,
       city,
       state,
-      zipcode,
+      location_zipcode,
       image,
       description,
       rating
@@ -139,8 +139,8 @@ class Form extends Component {
           />
           <input
             placeholder="ZipCode"
-            name="zipcode"
-            value={zipcode}
+            name="location_zipcode"
+            value={location_zipcode}
             type="text"
             maxLength="5"
             onChange={this.handleInput}
@@ -154,6 +154,7 @@ class Form extends Component {
           />
 
           <input
+            className="choose-file"
             type="file"
             onChange={e => this.getSignedRequest(e.target.files)}
           />
@@ -175,7 +176,7 @@ class Form extends Component {
         onChange={this.handleRating}
       />
 
-          <button style={{ fontSize: "1.2rem" }} onClick={this.addNewLocation}>
+          <button className="form-button" onClick={this.addNewLocation}>
             Submit
           </button>
         </div>

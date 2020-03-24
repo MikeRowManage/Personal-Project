@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import UserLocations from "./UserLocations";
-import {getUser} from "../dux/reducer"
+import { getUser } from "../dux/reducer";
+import './profile.scss'
 
 class Profile extends Component {
   constructor(props) {
@@ -18,12 +19,11 @@ class Profile extends Component {
   };
 
   componentDidUpdate(prevProps) {
-    if(prevProps !== this.props) {
-      this.getUserLocations()
+    if (prevProps !== this.props) {
+      this.getUserLocations();
     }
   }
 
-  
   getUserLocations = () => {
     axios
       .get(`/api/locations/${this.props.user.user_id}`)
@@ -37,10 +37,9 @@ class Profile extends Component {
       );
   };
 
-
   render() {
     const { userLocations } = this.state;
-    const {getUserLocations} = this
+    const { getUserLocations } = this;
     const mappedUserLocations = userLocations.map((e, i) => {
       return (
         <UserLocations
@@ -50,7 +49,12 @@ class Profile extends Component {
         />
       );
     });
-    return <div>{mappedUserLocations}</div>;
+    return (
+    <div className="user-location-display">
+    <h2>{this.props.user.username}'s posted locations:</h2>
+      <div className="display">{mappedUserLocations}</div>
+    </div>
+    )
   }
 }
 
@@ -61,4 +65,4 @@ const mapStateToProps = reduxState => {
   };
 };
 
-export default connect(mapStateToProps, {getUser})(Profile);
+export default connect(mapStateToProps, { getUser })(Profile);

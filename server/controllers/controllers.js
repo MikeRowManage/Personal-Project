@@ -1,11 +1,11 @@
 module.exports = {
     getAllLocations: async (req, res) => {
-        const {zipcode} = req.query
+        const {location_zipcode} = req.query
         const db = req.app.get('db')
 
-        const locations = await db.get_all_locations([zipcode])
+        const locations = await db.get_all_locations([location_zipcode])
            const searchedLocations = locations.filter(el => {
-               return el.zipcode === +zipcode
+               return el.location_zipcode === +location_zipcode
            })
            res.status(200).send(searchedLocations)
     },
@@ -26,11 +26,11 @@ module.exports = {
 
     addNewLocation: async (req, res) => {
         const {id} = req.params
-        const {location_name, street_address, city, state, zipcode, image, description, rating} = req.body
+        const {location_name, street_address, city, state, location_zipcode, image, description, rating} = req.body
         const db = req.app.get('db')
         console.log(req.body)
 
-        await db.add_new_location([id, location_name, street_address, city, state, zipcode, image, description, rating])
+        await db.add_new_location([id, location_name, street_address, city, state, location_zipcode, image, description, rating])
         .then(() => {
             res.sendStatus(201)
         })
@@ -41,10 +41,10 @@ module.exports = {
 
     editLocation: (req, res) => {
         const {id} = req.params
-        const {location_name, street_address, city, state, zipcode, image, description, rating} = req.body
+        const {location_name, street_address, city, state, location_zipcode, image, description, rating} = req.body
         const db = req.app.get('db')
 
-        db.edit_location([location_name, street_address, city, state, zipcode, image, description, rating, id])
+        db.edit_location([location_name, street_address, city, state, location_zipcode, image, description, rating, id])
         .then(() => {
             res.sendStatus(200)
         }).catch(() => {

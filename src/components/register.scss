@@ -1,3 +1,5 @@
+@import '../sass/vars';
+
 * {
   margin: 0;
   box-sizing: border-box;
@@ -61,6 +63,11 @@
 .profile-upload {
   height: 100px;
   width: 100px;
+}
+
+.register-button {
+  @include button();
+  font-size: .7rem;
 }
 
 }
@@ -130,7 +137,8 @@
   }
 
   .register-button {
-    font-size: 2rem;
+    @include button();
+    font-size: 1.2rem;
   }
 
   .login-link {
@@ -209,7 +217,8 @@
     }
   
     .register-button {
-      font-size: 1.6rem;
+      @include button();
+      font-size: 1.4rem;
     }
   
     .login-link {

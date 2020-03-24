@@ -1,32 +1,36 @@
 import React from 'react'
 import BeautyStars from 'beauty-stars'
 import './location.scss'
+import {Link} from 'react-router-dom'
 
 function Location(props) {
     console.log(props)
-    const {location_name, street_address, city, state, zipcode, image, description, rating, username} = props.locations
+    const {location_name, street_address, city, state, location_zipcode, image, description, rating, username, profile_pic} = props.locations
     return (
         
             <div className="locations">
-            <h2 style={{borderBottom: '2px solid black', fontSize: '1.2rem'}}>{location_name}</h2>
-            <p style={{fontStyle: 'italic', color: 'blue'}}>Submitted by {username}</p>
-            <p>{street_address} {city},{state} {zipcode}</p>
-        <h3 style={{ marginBottom: '7px'}}>Rating:</h3>
-             <BeautyStars
-          name="rating"
-        value={rating}
-        size='20px'
-      />
-            <div>
-                <img style={{ float: 'left', height: "100px", 
-                width: "100px",
-                borderRadius: '25px',
+            <h2 style={{borderBottom: '2px solid black'}}>{location_name}</h2>
+            <p className='location-info'>{street_address} {city},{state} {location_zipcode}</p>
+            <Link to='/profile'><img className='profile-image'  style={{  
+                backgroundImage: `url(${profile_pic})`, 
+                backgroundSize: "cover", 
+                backgroundRepeat: "no-repeat" }} alt=""/></Link>
+            <Link to='/profile'><p className="profile-info">Submitted by {username}</p></Link>
+             
+            <div className="location-image">
+                <img style={{
+                borderRadius: '10px',
                 backgroundImage: `url(${image})`, 
                 backgroundSize: "cover", 
                 backgroundRepeat: "no-repeat", marginTop: '7px' }} alt=""/>
+                <div className="stars">
+                <BeautyStars
+          name="rating"
+        value={rating}
+        size='15px'
+      /></div>
+                <p className="location-description">{description}</p>
             </div>
-            
-            <p>{description}</p>
       
       
             </div>

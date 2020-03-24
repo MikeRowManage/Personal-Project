@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { getUser } from "../dux/reducer";
 import { Link } from "react-router-dom";
 import { v4 as randomString } from "uuid";
-import "./register.css";
+import "./register.scss";
 import toilet from "../assets/Toilet.png";
 import defaultImage from "../assets/default.jpg";
 

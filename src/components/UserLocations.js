@@ -15,7 +15,7 @@ class UserLocations extends Component {
       street_address: props.userLocations.street_address,
       city: props.userLocations.city,
       state: props.userLocations.state,
-      zipcode: props.userLocations.zipcode,
+      location_zipcode: props.userLocations.location_zipcode,
       image: props.userLocations.image,
       description: props.userLocations.description,
       rating: props.userLocations.rating
@@ -78,7 +78,7 @@ class UserLocations extends Component {
       street_address,
       city,
       state,
-      zipcode,
+      location_zipcode,
       image,
       description,
       rating
@@ -89,7 +89,7 @@ class UserLocations extends Component {
       street_address,
       city,
       state,
-      zipcode,
+      location_zipcode,
       image,
       description,
       rating
@@ -104,7 +104,7 @@ class UserLocations extends Component {
         street_address: this.state.street_address,
         city: this.state.city,
         state: this.state.state,
-        zipcode: this.state.zipcode,
+        location_zipcode: this.state.location_zipcode,
         image: this.state.image,
         description: this.state.description,
         rating: this.state.rating
@@ -134,7 +134,7 @@ class UserLocations extends Component {
       street_address,
       city,
       state,
-      zipcode,
+      location_zipcode,
       image,
       description,
       rating,
@@ -178,9 +178,9 @@ class UserLocations extends Component {
             />
             <input
               placeholder="ZipCode"
-              name="zipcode"
-              value={this.state.zipcode}
-              type="text"
+              name="location_zipcode"
+              value={this.state.location_zipcode}
+              type="number"
               maxLength="5"
               onChange={this.handleInput}
             />
@@ -215,8 +215,8 @@ class UserLocations extends Component {
               maxLength="500"
               onChange={this.handleInput}
             />
-            <button onClick={this.editLocation}>Save</button>
-            <button onClick={this.handleCancel}>Cancel</button>
+            <button className="userLocation-button" onClick={this.editLocation}>Save</button>
+            <button className="userLocation-button" onClick={this.handleCancel}>Cancel</button>
             </div>
           </div>
         ) : (
@@ -224,19 +224,11 @@ class UserLocations extends Component {
           <div className='user-locations-body'>
             <h2 style={{borderBottom: '2px solid black', fontSize: '1.2rem'}}>{location_name}</h2>
             <p>
-              {street_address} {city},{state} {zipcode}
+              {street_address} {city},{state} {location_zipcode}
             </p>
-            <h3 style={{ marginBottom: '7px'}}>Rating:</h3>
-             <BeautyStars
-          name="rating"
-        value={rating}
-        size='20px'
-      />
-            <div>
+            <div className="user-location-image">
               <img
                 style={{
-                  height: "100px",
-                  width: "100px",
                   backgroundImage: `url(${image})`,
                   backgroundSize: "cover",
                   backgroundRepeat: "no-repeat",
@@ -244,10 +236,20 @@ class UserLocations extends Component {
                 }}
                 alt=""
               />
+            <div className="stars">
+             <BeautyStars
+          name="rating"
+        value={rating}
+        size='15px'
+      /></div>
+            <p className="user-location-description">{description}</p>
             </div>
-            <p>{description}</p>
-            <button onClick={this.deleteLocation}>Delete</button>
-            <button onClick={this.toggleEdit}>Edit</button>
+            <div className="buttons">
+            
+            <button className="userLocation-button" onClick={this.deleteLocation}>Delete</button>
+            <button className="userLocation-button" onClick={this.toggleEdit}>Edit</button>
+            
+            </div>
             </div>
           </div>
         )}

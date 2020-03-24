@@ -1,0 +1,17 @@
+@import '../sass/vars';
+
+.user-location-display {
+  background-image: url(../assets/RestroomSign.jpg);
+  background-repeat: no-repeat;
+  background-size: 330%;
+  background-position-x: 50%;
+  background-position-y: 40%;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

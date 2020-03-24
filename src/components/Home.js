@@ -1,23 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Location from "./Location";
 import axios from "axios";
 import "./home.scss";
 
 
-const Home = props => {
-  const [zipcode, setZipcode] = useState("");
-  const [locations, setLocations] = useState([]);
+class Home extends Component {
+    constructor(props) {
+        super(props)
 
-  useEffect(() => {
-    axios
-      .get(`/api/locations?zipcode=${zipcode}`)
-      .then(res => {
-        setLocations(res.data);
-      })
-      .catch(err => console.log(err));
-  }, [zipcode]);
+        this.state = {
+            location_zipcode: '',
+            locations: []
+        }
+    }
 
+    handleInput = e => {
+        this.setState({
+            location_zipcode: e.target.value
+        })
+    }
+
+    getAllLocations = () => {
+        axios.get(`/api/locations?location_zipcode=${this.state.location_zipcode}`)
+        .then(res => {
+            this.setState({
+                locations: res.data
+            })
+        }).catch(err => console.log(err))
+    }
+
+render() {
   return (
     <div className="home">
       <div className="home-search">
@@ -26,11 +39,12 @@ const Home = props => {
           <input
             placeholder="Enter Your Zip Code"
             maxLength="5"
-            value={zipcode}
-            onChange={e => setZipcode(e.target.value)}
+            value={this.state.location_zipcode}
+            onChange={this.handleInput}
           />
          
         </label>
+        <button className="search-button" onClick={this.getAllLocations}>Search</button>
 
         <label className="home-label">
           Add Your Own Location:{"  "}
@@ -41,11 +55,14 @@ const Home = props => {
           </Link>
         </label>
       </div>
-      {locations.map((locations, i) => {
+      <div className='display'>
+      {this.state.locations.map((locations, i) => {
         return <Location key={i} locations={locations} />;
       })}
+      </div>
     </div>
   );
 };
+}
 
 export default Home;

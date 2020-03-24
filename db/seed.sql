@@ -15,7 +15,7 @@
 -- street_address VARCHAR(75),
 -- city VARCHAR(50),
 -- state VARCHAR(25),
--- zipcode INT,
+-- location_zipcode INT,
 -- image VARCHAR(300),
 -- description VARCHAR(500),
 -- rating INT,

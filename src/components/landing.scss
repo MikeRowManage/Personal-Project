@@ -1,3 +1,5 @@
+@import '../sass/vars';
+
 * {
   margin: 0;
   box-sizing: border-box;
@@ -66,7 +68,8 @@
   }
 
   .login-button {
-    font-size: 1.2rem;
+    @include button()
+    margin-top: 10px;
   }
 
   .register-link {
@@ -138,7 +141,9 @@
   }
 
   .login-button {
-    font-size: 2rem;
+    @include button()
+    margin-top: 10px;
+    font-size: 1.5rem;
   }
 
   .register-link {
@@ -211,8 +216,9 @@
   }
 
   .login-button {
-    font-size: 2rem;
+    @include button()
     margin-top: 10px;
+    font-size: 1.8rem;
   }
 
   .register-link {
