@@ -8,6 +8,7 @@
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
+ 
 }
 
 .home-search {
@@ -15,21 +16,21 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  height: 25vh;
+  height: 20vh;
   width: 90vw;
   text-align: center;
   border-radius: 25px;
-  background: rgba(255,255,255, 0.40);
+  background: rgba(255,255,255, 0.9);
   font-size: 1.3rem;
   font-weight: 500;
-  margin-top: 15px;
+  margin-top: 25px;
 }
 
 .home-search > label > input {
-  width: 200px;
-  height: 30px;
+  width: 150px;
+  height: 25px;
   border-radius: 10px;
-  font-size: 1.2rem;
+  font-size: .9rem;
   margin-left: 5px;
 }
 
@@ -37,8 +38,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding-top: 15px;
+  align-content: flex-end;
+  padding-top: 25px;
 }
 
 .form-link {
@@ -47,8 +48,8 @@
   background-image: url(../assets/sign.png);
   background-repeat: no-repeat;
   background-size: cover;
-  height: 30px;
-  width: 30px;
+  height: 25px;
+  width: 25px;
   margin-left: 5px;
 }
 
@@ -70,9 +71,16 @@
 	font-family: Optima Bold;
 	font-size:15px;
 	font-weight:bold;
-	padding:6px 24px;
+	padding:3px 12px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #ffffff;
+}
+
+.map {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
 }
 
 }
@@ -91,21 +99,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    height: 35vh;
+    height: 25vh;
     width: 90vw;
     text-align: center;
     border-radius: 25px;
-    background: rgba(255,255,255, 0.40);
-    font-size: 1.3rem;
+    background: rgba(255,255,255, 0.80);
+    font-size: 1rem;
     font-weight: 500;
-    margin-top: 5px;
+    margin-top: 55px;
   }
   
   .home-search > label > input {
-    width: 400px;
-    height: 50px;
+    width: 300px;
+    height: 40px;
     border-radius: 10px;
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-left: 10px;
   }
   
@@ -121,8 +129,8 @@
     background-image: url(../assets/sign.png);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 60px;
-    width: 60px;
+    height: 50px;
+    width: 50px;
     padding-top: 10px;
     margin-left: 10px;
   }
@@ -149,6 +157,13 @@
     text-decoration:none;
     text-shadow:0px 1px 0px #ffffff;
   }
+
+  .map {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
   
   }
 
@@ -170,14 +185,16 @@
       width: 55vw;
       text-align: center;
       border-radius: 25px;
-      background: rgba(255,255,255, 0.40);
+      background: rgba(255,255,255, 0.80);
       font-size: 1.3rem;
       font-weight: 500;
       margin-top: 5px;
+      z-index: 100;
+      position: fixed;
     }
     
     .home-search > label > input {
-      width: 400px;
+      width: 300px;
       height: 50px;
       border-radius: 10px;
       font-size: 2rem;
@@ -223,6 +240,13 @@
       padding:6px 24px;
       text-decoration:none;
       text-shadow:0px 1px 0px #ffffff;
+    }
+
+    .map {
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
     }
     
     }

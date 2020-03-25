@@ -34,7 +34,7 @@ export function checkUser() {
   }
 }
 
-export default function reducer(state = initialState, action) {
+export default function userReducer(state = initialState, action) {
   const {type, payload} = action
   switch(type) {
     case GET_USER:

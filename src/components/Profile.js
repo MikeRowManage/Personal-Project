@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import UserLocations from "./UserLocations";
-import { getUser } from "../dux/reducer";
+import { getUser } from "../dux/userReducer";
 import './profile.scss'
 
 class Profile extends Component {
@@ -51,7 +51,7 @@ class Profile extends Component {
     });
     return (
     <div className="user-location-display">
-    <h2>{this.props.user.username}'s posted locations:</h2>
+    <h2>{this.props.user.username}'s safe bathrooms:</h2>
       <div className="display">{mappedUserLocations}</div>
     </div>
     )

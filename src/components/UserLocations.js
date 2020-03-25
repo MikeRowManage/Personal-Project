@@ -128,6 +128,7 @@ class UserLocations extends Component {
   };
 
   render() {
+
     
     const {
       location_name,
@@ -139,6 +140,8 @@ class UserLocations extends Component {
       description,
       rating,
     } = this.props.userLocations;
+    
+    const url = `https://www.google.com/maps/search/?api=1&query=${street_address} ${city} ${state} ${location_zipcode}`
     return (
       <>
         {this.state.isEditing ? (
@@ -223,9 +226,7 @@ class UserLocations extends Component {
           <div className='user-locations'>
           <div className='user-locations-body'>
             <h2 style={{borderBottom: '2px solid black', fontSize: '1.2rem'}}>{location_name}</h2>
-            <p>
-              {street_address} {city},{state} {location_zipcode}
-            </p>
+            <a href={url}><p className='location-info'>{street_address} {city},{state} {location_zipcode}</p></a> 
             <div className="user-location-image">
               <img
                 style={{

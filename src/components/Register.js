@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { getUser } from "../dux/reducer";
+import { getUser } from "../dux/userReducer";
 import { Link } from "react-router-dom";
 import { v4 as randomString } from "uuid";
 import "./register.scss";
@@ -121,6 +121,7 @@ class Register extends Component {
             Toilet Quest
             <img src={toilet} alt="" className="toilet-icon" />
           </h1>
+          <div className="register-sub-title"><p>The Safe Bathroom App</p></div>
         </header>
         <div className="register-body">
           <input

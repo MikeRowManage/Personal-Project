@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom'
 import routes from './routes'
 import {connect} from 'react-redux'
-import {checkUser} from './dux/reducer'
+import {checkUser} from './dux/userReducer'
 import Header from './components/Header'
 // import './reset.css'
 import './App.css';
@@ -15,8 +15,8 @@ componentDidMount() {
 }
 
 componentDidUpdate(prevProps) {
-  if(prevProps.reducer.user !== this.props.reducer.user) {
-    if(!this.props.reducer.user.username)
+  if(prevProps.userReducer.user !== this.props.userReducer.user) {
+    if(!this.props.userReducer.user.username)
     this.props.history.push('/')
   }
 }
@@ -41,7 +41,7 @@ componentDidUpdate(prevProps) {
 
 const mapStateToProps = reduxState =>{
   return {
-    reducer: reduxState
+    userReducer: reduxState
   }
 }
 

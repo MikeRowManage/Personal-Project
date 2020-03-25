@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
-import {logout} from '../dux/reducer'
+import {logout} from '../dux/userReducer'
 import toilet from '../assets/Toilet.png'
 import './header.scss'
 
@@ -21,6 +21,7 @@ function Header(props) {
         <div className="header">
             <div className="header-title">
             <Link to='/home'><h1 className="app-name">Toilet Quest<img className="logo" src={toilet} alt="" /></h1></Link>
+            <div className="sub-title"><p>The Safe Bathroom App</p></div>
             </div>
             <div className='profile-header'>
                 <Link to='/profile'><img className='header-image'  style={{  

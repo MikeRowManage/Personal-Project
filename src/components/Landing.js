@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {getUser} from '../dux/reducer'
+import {getUser} from '../dux/userReducer'
 import axios from 'axios'
 import './landing.scss'
 import toilet from '../assets/Toilet.png'
@@ -39,6 +39,7 @@ class Landing extends Component {
             <div className="landing">
                 <header className='landing-header'>
                 <h1>Toilet Quest<img className="toilet-icon"src={toilet} alt=""/></h1>
+                <div className="landing-sub-title"><p>The Safe Bathroom App</p></div>
                 </header>
                 
                 <div className="landing-auth">

@@ -45,11 +45,11 @@
 }
 
 @mixin title-desktop() {
-  font-size: 3.8rem;
+  font-size: 3rem;
   background-color: white;
   border-radius: 100px;
   border: 2px solid black;
-  width: 65vw;
+  width: 55vw;
 }
 
 @mixin h1-title() {

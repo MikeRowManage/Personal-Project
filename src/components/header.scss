@@ -17,6 +17,8 @@
 
 .header-title {
   @include title-mobile();
+  display: flex;
+  flex-direction: column;
 }
 
 .app-name {
@@ -45,6 +47,10 @@
   font-weight: 300;
   color: blue;
   font-size: .75rem;
+}
+
+.sub-title {
+  font-size: .25rem;
 }
 
 }
@@ -90,6 +96,10 @@
     font-weight: 300;
     color: blue;
     font-size: .85rem;
+  }
+
+  .sub-title {
+    font-size: 1.1rem;
   }
   
   }

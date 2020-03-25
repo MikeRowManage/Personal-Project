@@ -1,5 +1,6 @@
 @import '../sass/vars';
 
+@media (max-width: 480px) {
 .user-location-display {
   background-image: url(../assets/RestroomSign.jpg);
   background-repeat: no-repeat;
@@ -15,3 +16,22 @@
   justify-content: center;
   align-items: center;
 }
+}
+
+@media (min-width: 481px) {
+  .user-location-display {
+    background-image: url(../assets/RestroomSign.jpg);
+    background-repeat: no-repeat;
+    background-size: 330%;
+    background-position-x: 50%;
+    background-position-y: 40%;
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+  
+  .display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  }

@@ -6,11 +6,13 @@ import {Link} from 'react-router-dom'
 function Location(props) {
     console.log(props)
     const {location_name, street_address, city, state, location_zipcode, image, description, rating, username, profile_pic} = props.locations
+
+    const url = `https://www.google.com/maps/search/?api=1&query=${street_address} ${city} ${state} ${location_zipcode}`
     return (
         
             <div className="locations">
             <h2 style={{borderBottom: '2px solid black'}}>{location_name}</h2>
-            <p className='location-info'>{street_address} {city},{state} {location_zipcode}</p>
+           <a href={url}><p className='location-info'>{street_address} {city},{state} {location_zipcode}</p></a> 
             <Link to='/profile'><img className='profile-image'  style={{  
                 backgroundImage: `url(${profile_pic})`, 
                 backgroundSize: "cover", 

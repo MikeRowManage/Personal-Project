@@ -68,12 +68,16 @@
   }
 
   .login-button {
-    @include button()
+    @include button();
     margin-top: 10px;
   }
 
   .register-link {
     padding-top: 25px;
+  }
+
+  .landing-sub-title {
+    font-size: 1rem;
   }
 
 }
@@ -141,7 +145,7 @@
   }
 
   .login-button {
-    @include button()
+    @include button();
     margin-top: 10px;
     font-size: 1.5rem;
   }
@@ -149,6 +153,10 @@
   .register-link {
     font-size: 1.8rem;
     padding-top: 25px;
+  }
+
+  .landing-sub-title {
+    font-size: 2rem;
   }
 
 }
@@ -216,7 +224,7 @@
   }
 
   .login-button {
-    @include button()
+    @include button();
     margin-top: 10px;
     font-size: 1.8rem;
   }
@@ -226,4 +234,7 @@
     padding-top: 25px;
   }
 
+  .landing-sub-title {
+    font-size: 2rem;
+  }
 }

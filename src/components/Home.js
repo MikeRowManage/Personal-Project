@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+// import {GoogleApiWrapper, Marker, InfoWindow} from 'google-maps-react'
+// import CurrentLocation from './CurrentLocation'
 import Location from "./Location";
 import axios from "axios";
 import "./home.scss";
@@ -11,7 +13,10 @@ class Home extends Component {
 
         this.state = {
             location_zipcode: '',
-            locations: []
+            locations: [],
+            // showingInfoWindow: false,
+            // activeMarker: {},
+            // selectedPlace: {}
         }
     }
 
@@ -20,6 +25,22 @@ class Home extends Component {
             location_zipcode: e.target.value
         })
     }
+
+    onMarkerClick = (props, marker, e) =>
+  this.setState({
+    selectedPlace: props,
+    activeMarker: marker,
+    showingInfoWindow: true
+  })
+
+  onClose = props => {
+  if (this.state.showingInfoWindow) {
+    this.setState({
+      showingInfoWindow: false,
+      activeMarker: null
+    });
+  }
+};
 
     getAllLocations = () => {
         axios.get(`/api/locations?location_zipcode=${this.state.location_zipcode}`)
@@ -33,9 +54,10 @@ class Home extends Component {
 render() {
   return (
     <div className="home">
+    
       <div className="home-search">
         <label className="home-label">
-          Find A Location:
+          Find A Safe Bathroom:
           <input
             placeholder="Enter Your Zip Code"
             maxLength="5"
@@ -47,7 +69,7 @@ render() {
         <button className="search-button" onClick={this.getAllLocations}>Search</button>
 
         <label className="home-label">
-          Add Your Own Location:{"  "}
+          Add Your Own Safe Bathroom:{"  "}
           <Link to="/form">
             <button
               className="form-link"
@@ -55,6 +77,7 @@ render() {
           </Link>
         </label>
       </div>
+      
       <div className='display'>
       {this.state.locations.map((locations, i) => {
         return <Location key={i} locations={locations} />;

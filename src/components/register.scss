@@ -70,6 +70,10 @@
   font-size: .7rem;
 }
 
+.register-sub-title {
+  font-size: 1rem;
+}
+
 }
 
 @media (min-width: 481px) {
@@ -150,6 +154,11 @@
     height: 200px;
     width: 200px;
   }
+
+  .register-sub-title {
+    font-size: 2rem;
+  }
+
   }
 
   @media (min-width: 769px) {
@@ -234,5 +243,9 @@
 
     .choose-file {
       padding-top: 10px;
+    }
+
+    .register-sub-title {
+      font-size: 2rem;
     }
     }

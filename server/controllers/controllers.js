@@ -87,11 +87,15 @@ transporter.verify((error, success) => {
 })
 
         let mail = {
-            from: "Personal Project",
+            from: "Toilet Quest",
             to: email,
             subject: "Welcome to Toilet Quest!",
             text: `Hi ${first_name}, 
-            Thank you for using Toilet Quest!`
+            Thank you for using Toilet Quest! We hope you enjoy your safe bathroom seeking adventure with a little help from us. Happy hunting from all of us here at Toilet Quest!
+            
+            Sincerely, 
+            Michael Priestley
+            Creator of Toilet Quest`
         }
 
         transporter.sendMail(mail, (err, data) => {
